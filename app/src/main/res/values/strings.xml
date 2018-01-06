@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">OCafe</string>
-
-    <string name="v1_commit">Eu sou a versão 1!</string>
-    <string name="v2_commit">Eu sou a versão 2!</string>
-    <string name="v3_commit">Eu sou a versão 3!</string>
+    <string name="portrait_mode">Portrait!"</string>
+    <string name="landscape_mode">Landscape!"</string>
 </resources>
