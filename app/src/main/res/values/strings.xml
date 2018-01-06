@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">OCafe</string>
     <string name="portrait_mode">Portrait!"</string>
-    <string name="landscape_mode">Landscape!"</string>
+
+    <string name="product_list_fragment">This is the product list fragment</string>
+    <string name="product_description_fragment">This is the product description fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
