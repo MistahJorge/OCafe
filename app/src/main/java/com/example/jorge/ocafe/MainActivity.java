@@ -2,58 +2,75 @@ package com.example.jorge.ocafe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String[] names = {
-            "Coffe",
-            "Cookie"
-    };
-    public static String[] descriptions = {
-            "Article One\n\nExcepteur pour-over occaecat squid biodiesel umami gastropub, nulla " +
-                    "laborum salvia dreamcatcher fanny pack. Ullamco culpa retro ea, trust fund " +
-                    "excepteur eiusmod direct trade banksy nisi lo-fi cray messenger bag. " +
-                    "Nesciunt esse carles selvage put a bird on it gluten-free, wes anderson ut " +
-                    "trust fund twee occupy viral. Laboris small batch scenester pork belly, " +
-                    "leggings ut farm-to-table aliquip yr nostrud iphone viral next level. Craft " +
-                    "beer dreamcatcher pinterest truffaut ethnic, authentic brunch. Esse " +
-                    "single-origin coffee banksy do next level tempor. Velit synth dreamcatcher, " +
-                    "magna shoreditch in american apparel messenger bag narwhal PBR ennui " +
-                    "farm-to-table.",
-            "Article Two\n\nVinyl williamsburg non velit, master cleanse four loko banh mi. Enim " +
-                    "kogi keytar trust fund pop-up portland gentrify. Non ea typewriter dolore " +
-                    "deserunt Austin. Ad magna ethical kogi mixtape next level. Aliqua pork " +
-                    "belly thundercats, ut pop-up tattooed dreamcatcher kogi accusamus photo " +
-                    "booth irony portland. Semiotics brunch ut locavore irure, enim etsy laborum " +
-                    "stumptown carles gentrify post-ironic cray. Butcher 3 wolf moon blog synth, " +
-                    "vegan carles odd future."
-    };
-
     ProductListFragment productsListFragment;
-    ProductDescriptionFragment productDescriptionFragment;
+    ProductDetailsFragment productDetailsFragment;
+
+    private static final String fakeResponse = "[\n" +
+            "   {\n" +
+            "       \"Category\": \"Drinks\",\n" +
+            "       \"Name\": \"Coffee\",\n" +
+            "       \"Description\": \"Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant.\",\n" +
+            "       \"Image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/275px-A_small_cup_of_coffee.JPG\",\n" +
+            "       \"Price\" : 0.75,\n" +
+            "       \"Stock\" : 50\n" +
+            "   },\n" +
+            "   {\n" +
+            "       \"Category\": \"Food\",\n" +
+            "       \"Name\": \"Doughnut\",\n" +
+            "       \"Description\": \"A doughnut is a type of fried dough confectionery or dessert food.\",\n" +
+            "       \"Image\": \"https://www.duckdonuts.com/wp-content/uploads/2017/06/September_Glazed-310x320.png?x19636\",\n" +
+            "       \"Price\" : 1.10,\n" +
+            "       \"Stock\" : 28\n" +
+            "   }\n" +
+            "]";
+
+    public static List<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, names[0], Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, descriptions[0], Toast.LENGTH_LONG).show();
+        products = new ArrayList<>();
+        try {
+            JSONArray fakeJSONArray = new JSONArray(fakeResponse);
+            for (int i = 0; i < fakeJSONArray.length(); i++) {
+                JSONObject jsonObject = fakeJSONArray.getJSONObject(i);
 
-        Toast.makeText(this, names[1], Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, descriptions[1], Toast.LENGTH_LONG).show();
+                String category = jsonObject.optString("Category");
+                String name = jsonObject.optString("Name");
+                String description = jsonObject.optString("Description");
+                String image = jsonObject.optString("Image");
+                double price = jsonObject.optDouble("Price");
+                int stock = jsonObject.optInt("Stock");
+
+                Product product = new Product(category, name, description, image, price, stock);
+
+                products.add(product);
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
 
         if (findViewById(R.id.fragment_container_portrait) != null) {
-            if (productDescriptionFragment != null) {
+            if (productsListFragment != null) {
                 return;
             }
-            productDescriptionFragment = new ProductDescriptionFragment();
-            productDescriptionFragment.setArguments(getIntent().getExtras());
+            productsListFragment = new ProductListFragment();
+            productsListFragment.setArguments(getIntent().getExtras());
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_portrait, productDescriptionFragment).commit();
-            Toast.makeText(this, "Fragment Created.", Toast.LENGTH_SHORT).show();
+                    .add(R.id.fragment_container_portrait, productsListFragment).commit();
         }
 
         if (findViewById(R.id.fragment_container_land1) != null) {
@@ -68,14 +85,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (findViewById(R.id.fragment_container_land2) != null) {
-            if (productDescriptionFragment != null) {
+            if (productDetailsFragment != null) {
                 return;
             }
-            productDescriptionFragment = new ProductDescriptionFragment();
-            productDescriptionFragment.setArguments(getIntent().getExtras());
+            productDetailsFragment = new ProductDetailsFragment();
+            productDetailsFragment.setArguments(getIntent().getExtras());
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_land2, productDescriptionFragment).commit();
+                    .add(R.id.fragment_container_land2, productDetailsFragment).commit();
         }
     }
 }
