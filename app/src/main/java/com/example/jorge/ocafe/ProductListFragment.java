@@ -34,7 +34,7 @@ public class ProductListFragment extends Fragment {
         super.onStart();
 
         productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
-        listView = getActivity().findViewById(R.id.listViewProduct);
+        listView = (ListView) getActivity().findViewById(R.id.listViewProduct);
         listView.setAdapter(productsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -26,7 +26,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:text="TextView"
-        android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         app:layout_constraintStart_toEndOf="@+id/imageViewProductImageDetails"
         app:layout_constraintTop_toTopOf="@+id/imageViewProductImageDetails" />
 
