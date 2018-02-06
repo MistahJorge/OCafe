@@ -14,7 +14,7 @@ import android.widget.Toast;
  */
 public class ProductListFragment extends Fragment {
 
-    private static ProductsAdapter productsAdapter;
+    private ProductsAdapter productsAdapter;
     private ListView listView;
 
     public ProductListFragment() {
@@ -32,7 +32,6 @@ public class ProductListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
         listView = (ListView) getActivity().findViewById(R.id.listViewProduct);
         listView.setAdapter(productsAdapter);

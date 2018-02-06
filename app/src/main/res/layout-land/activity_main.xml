@@ -11,7 +11,7 @@
         android:id="@+id/fragment_container_land1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4">
+        android:layout_weight="1">
 
 
     </FrameLayout>
@@ -21,7 +21,7 @@
         android:id="@+id/fragment_container_land2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="1">
 
     </FrameLayout>
 </LinearLayout>

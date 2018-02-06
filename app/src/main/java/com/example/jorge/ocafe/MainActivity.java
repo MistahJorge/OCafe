@@ -41,58 +41,60 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        products = new ArrayList<>();
-        try {
-            JSONArray fakeJSONArray = new JSONArray(fakeResponse);
-            for (int i = 0; i < fakeJSONArray.length(); i++) {
-                JSONObject jsonObject = fakeJSONArray.getJSONObject(i);
-
-                String category = jsonObject.optString("Category");
-                String name = jsonObject.optString("Name");
-                String description = jsonObject.optString("Description");
-                String image = jsonObject.optString("Image");
-                double price = jsonObject.optDouble("Price");
-                int stock = jsonObject.optInt("Stock");
-
-                Product product = new Product(category, name, description, image, price, stock);
-
-                products.add(product);
-            }
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-
         if (findViewById(R.id.fragment_container_portrait) != null) {
-            if (productsListFragment != null) {
+            if (FragmentCache.productsListFragmentPortrait != null) {
                 return;
             }
-            productsListFragment = new ProductListFragment();
-            productsListFragment.setArguments(getIntent().getExtras());
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_portrait, productsListFragment).commit();
-        }
+            setPortraitFragment(FragmentCache.getProductsListFragmentPortrait());
 
-        if (findViewById(R.id.fragment_container_land1) != null) {
-            if (productsListFragment != null) {
+        } else {
+            if (FragmentCache.productsListFragmentLand != null && FragmentCache.productDetailsFragment != null) {
                 return;
             }
-            productsListFragment = new ProductListFragment();
-            productsListFragment.setArguments(getIntent().getExtras());
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_land1, productsListFragment).commit();
+            setLandscapeFragment(FragmentCache.getProductsListFragmentLand(), FragmentCache.getProductDetailsFragment());
         }
 
-        if (findViewById(R.id.fragment_container_land2) != null) {
-            if (productDetailsFragment != null) {
-                return;
+        if (products == null) {
+            products = new ArrayList<>();
+            try {
+                JSONArray fakeJSONArray = new JSONArray(fakeResponse);
+                for (int i = 0; i < fakeJSONArray.length(); i++) {
+                    JSONObject jsonObject = fakeJSONArray.getJSONObject(i);
+
+                    String category = jsonObject.optString("Category");
+                    String name = jsonObject.optString("Name");
+                    String description = jsonObject.optString("Description");
+                    String image = jsonObject.optString("Image");
+                    double price = jsonObject.optDouble("Price");
+                    int stock = jsonObject.optInt("Stock");
+
+                    Product product = new Product(category, name, description, image, price, stock);
+
+                    products.add(product);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            productDetailsFragment = new ProductDetailsFragment();
-            productDetailsFragment.setArguments(getIntent().getExtras());
-
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_land2, productDetailsFragment).commit();
         }
+    }
+
+    private void setPortraitFragment(ProductListFragment productsListFragment) {
+        productsListFragment.setArguments(getIntent().getExtras());
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_portrait,
+                productsListFragment).commit();
+
+
+    }
+
+    private void setLandscapeFragment(ProductListFragment productsListFragment, ProductDetailsFragment productDetailsFragment) {
+        productsListFragment.setArguments(getIntent().getExtras());
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_land1,
+                productsListFragment).commit();
+
+        productDetailsFragment.setArguments(getIntent().getExtras());
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_land2,
+                productDetailsFragment).commit();
     }
 }
