@@ -36,6 +36,10 @@ public class Product {
         return this.name;
     }
 
+    public String getCategory() {
+        return this.category;
+    }
+
     public String getDescription() {
         return this.description;
     }

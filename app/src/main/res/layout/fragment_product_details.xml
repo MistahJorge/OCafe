@@ -47,7 +47,7 @@
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" android:contentDescription="Image placeholder"/>
 
             <TextView
                 android:id="@+id/textViewCategoryDetailsLabel"
@@ -91,7 +91,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
@@ -119,8 +119,8 @@
                 android:id="@+id/textViewProductPriceDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewPriceDetailsLabel"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +136,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewPriceDetailsLabel" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewProductStockDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

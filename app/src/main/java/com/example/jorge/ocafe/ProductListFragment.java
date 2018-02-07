@@ -16,7 +16,6 @@ public class ProductListFragment extends Fragment {
 
     private ProductsAdapter productsAdapter;
 
-
     public ProductListFragment() {
         // Required empty public constructor
     }
@@ -39,12 +38,10 @@ public class ProductListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Product product = productsAdapter.getItem(i);
                 if (getActivity().findViewById(R.id.fragment_container_portrait) != null){
-                    Toast.makeText(getActivity().getBaseContext(), "Clicked Portrait." + product.getName(),
-                            Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getActivity().getBaseContext(), "Clicked Landscape." + product.getName(),
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getBaseContext(), "Clicked Portrait." +
+                                    product.getName(), Toast.LENGTH_SHORT).show();
+                } else {
+                    ProductDetailsFragment.onArticleSelected(product);
                 }
             }
         });
