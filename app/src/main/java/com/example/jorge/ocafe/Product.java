@@ -1,9 +1,5 @@
 package com.example.jorge.ocafe;
 
-/**
- * Created by jorge on 13/01/2018.
- */
-
 public class Product {
     private long id;
     private String category;
@@ -14,6 +10,16 @@ public class Product {
     private int stock;
 
     public Product(String category, String name, String description, String image, double price, int stock) {
+        this.category = category;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    public Product(long id, String category, String name, String description, String image, double price, int stock) {
+        this.id = id;
         this.category = category;
         this.name = name;
         this.description = description;

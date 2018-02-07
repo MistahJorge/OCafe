@@ -12,9 +12,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ProductListFragment productsListFragment;
-    ProductDetailsFragment productDetailsFragment;
-
     private static final String fakeResponse = "[\n" +
             "   {\n" +
             "       \"Category\": \"Drinks\",\n" +
@@ -84,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
         productsListFragment.setArguments(getIntent().getExtras());
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_portrait,
                 productsListFragment).commit();
-
-
     }
 
     private void setLandscapeFragment(ProductListFragment productsListFragment, ProductDetailsFragment productDetailsFragment) {

@@ -48,16 +48,16 @@ public class ProductsAdapter extends BaseAdapter {
         }
         Product product = this.getItem(i);
 
-        TextView textViewProductName = (TextView) view.findViewById(R.id.textViewProductNameDetails);
+        TextView textViewProductName = view.findViewById(R.id.textViewProductNameDetails);
         textViewProductName.setText(product.getName());
 
-        TextView textViewProductPrice = (TextView) view.findViewById(R.id.textViewProductPrice);
+        TextView textViewProductPrice = view.findViewById(R.id.textViewProductPrice);
         textViewProductPrice.setText("Price: " + product.getPrice() + "€");
 
-        TextView textViewProductStock = (TextView) view.findViewById(R.id.textViewProductStock);
+        TextView textViewProductStock = view.findViewById(R.id.textViewProductStock);
         textViewProductStock.setText("Stock: " + product.getStock());
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageViewProductImageDetails);
+        ImageView imageView = view.findViewById(R.id.imageViewProductImageDetails);
         Glide.with(context).load(product.getImage()).into(imageView);
 
         return view;

@@ -15,12 +15,11 @@ import android.widget.Toast;
 public class ProductListFragment extends Fragment {
 
     private ProductsAdapter productsAdapter;
-    private ListView listView;
+
 
     public ProductListFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,13 +32,20 @@ public class ProductListFragment extends Fragment {
     public void onStart() {
         super.onStart();
         productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
-        listView = (ListView) getActivity().findViewById(R.id.listViewProduct);
+        ListView listView = getActivity().findViewById(R.id.listViewProduct);
         listView.setAdapter(productsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Product product = productsAdapter.getItem(i);
-                Toast.makeText(getActivity(), product.getName(), Toast.LENGTH_SHORT).show();
+                if (getActivity().findViewById(R.id.fragment_container_portrait) != null){
+                    Toast.makeText(getActivity().getBaseContext(), "Clicked Portrait." + product.getName(),
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getActivity().getBaseContext(), "Clicked Landscape." + product.getName(),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
