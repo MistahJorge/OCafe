@@ -8,7 +8,7 @@ public class FragmentCache {
     static ProductListFragment productsListFragmentPortrait;
     static ProductListFragment productsListFragmentLand;
     static ProductDetailsFragment productDetailsFragmentPortrait;
-    static  ProductDetailsFragment productDetailsFragmentLand;
+    static ProductDetailsFragment productDetailsFragmentLand;
 
     public static ProductListFragment getProductsListFragmentPortrait() {
         if (null == productsListFragmentPortrait) productsListFragmentPortrait = new ProductListFragment();
