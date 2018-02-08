@@ -8,25 +8,29 @@ public class FragmentCache {
     static ProductListFragment productsListFragmentPortrait;
     static ProductListFragment productsListFragmentLand;
     static ProductDetailsFragment productDetailsFragmentPortrait;
-    static  ProductDetailsFragment productDetailsFragmentLand;
+    static ProductDetailsFragment productDetailsFragmentLand;
 
     public static ProductListFragment getProductsListFragmentPortrait() {
-        if (null == productsListFragmentPortrait) productsListFragmentPortrait = new ProductListFragment();
-        return productsListFragmentPortrait;
+        if (null == FragmentCache.productsListFragmentPortrait)
+            FragmentCache.productsListFragmentPortrait = new ProductListFragment();
+        return FragmentCache.productsListFragmentPortrait;
     }
 
     public static ProductDetailsFragment getProductDetailsFragmentPortrait() {
-        if (null == productDetailsFragmentPortrait) productDetailsFragmentPortrait = new ProductDetailsFragment();
-        return productDetailsFragmentPortrait;
+        if (null == FragmentCache.productDetailsFragmentPortrait)
+            FragmentCache.productDetailsFragmentPortrait = new ProductDetailsFragment();
+        return FragmentCache.productDetailsFragmentPortrait;
     }
 
     public static ProductListFragment getProductsListFragmentLand() {
-        if (null == productsListFragmentLand) productsListFragmentLand = new ProductListFragment();
-        return productsListFragmentLand;
+        if (null == FragmentCache.productsListFragmentLand)
+            FragmentCache.productsListFragmentLand = new ProductListFragment();
+        return FragmentCache.productsListFragmentLand;
     }
 
     public static ProductDetailsFragment getProductDetailsFragmentLand() {
-        if (null == productDetailsFragmentLand) productDetailsFragmentLand = new ProductDetailsFragment();
-        return productDetailsFragmentLand;
+        if (null == FragmentCache.productDetailsFragmentLand)
+            FragmentCache.productDetailsFragmentLand = new ProductDetailsFragment();
+        return FragmentCache.productDetailsFragmentLand;
     }
 }

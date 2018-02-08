@@ -16,9 +16,8 @@ import com.bumptech.glide.Glide;
  */
 public class ProductDetailsFragment extends Fragment {
 
-    private static Product product;
-
     private static TextView productNameDetailsTextView;
+    private TextView productNameDetailsTextViewForIf;
     private static TextView productCategoryDetailsTextView;
     private static TextView productDescriptionDetailsTextView;
     private static ImageView productImageDetailsImageView;
@@ -42,31 +41,30 @@ public class ProductDetailsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (getActivity().findViewById(R.id.fragment_container_portrait) == null) {
             this.context = getActivity();
-            productNameDetailsTextView = getActivity().findViewById(R.id.textViewProductNameDetails);
+            productNameDetailsTextViewForIf  = getActivity().findViewById(R.id.textViewProductNameDetails);
+            productNameDetailsTextView = productNameDetailsTextViewForIf;
             productCategoryDetailsTextView = getActivity().findViewById(R.id.textViewProductCategoryDetails);
             productDescriptionDetailsTextView = getActivity().findViewById(R.id.textViewProductDescriptionDetails);
             productImageDetailsImageView = getActivity().findViewById(R.id.imageViewProductImageDetails);
             productPriceDetailsTextView = getActivity().findViewById(R.id.textViewProductPriceDetails);
             productStockDetailsTextView = getActivity().findViewById(R.id.textViewProductStockDetails);
-            if (this.product != null) {
+
+            if (productNameDetailsTextViewForIf != null) {
                 ProductDetailsFragment.updateDetails();
             }
-        }
     }
 
-    public static void onArticleSelected(Product product) {
-        ProductDetailsFragment.product = product;
+    public static void onProductSelected() {
         ProductDetailsFragment.updateDetails();
     }
 
     private static void updateDetails(){
-        ProductDetailsFragment.productNameDetailsTextView.setText(ProductDetailsFragment.product.getName());
-        Glide.with(ProductDetailsFragment.context).load(ProductDetailsFragment.product.getImage()).into(productImageDetailsImageView);
-        ProductDetailsFragment.productCategoryDetailsTextView.setText(ProductDetailsFragment.product.getCategory());
-        ProductDetailsFragment.productDescriptionDetailsTextView.setText(ProductDetailsFragment.product.getDescription());
-        ProductDetailsFragment.productPriceDetailsTextView.setText(Double.toString(ProductDetailsFragment.product.getPrice()) + " €");
-        ProductDetailsFragment.productStockDetailsTextView.setText(Integer.toString(ProductDetailsFragment.product.getStock()));
+            ProductDetailsFragment.productNameDetailsTextView.setText(MainActivity.product.getName());
+            Glide.with(ProductDetailsFragment.context).load(MainActivity.product.getImage()).into(productImageDetailsImageView);
+            ProductDetailsFragment.productCategoryDetailsTextView.setText(MainActivity.product.getCategory());
+            ProductDetailsFragment.productDescriptionDetailsTextView.setText(MainActivity.product.getDescription());
+            ProductDetailsFragment.productPriceDetailsTextView.setText(Double.toString(MainActivity.product.getPrice()) + " €");
+            ProductDetailsFragment.productStockDetailsTextView.setText(Integer.toString(MainActivity.product.getStock()));
     }
 }

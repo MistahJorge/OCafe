@@ -33,32 +33,29 @@ public class ProductListFragment extends Fragment {
         super.onStart();
         productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
         ListView listView = getActivity().findViewById(R.id.listViewProduct);
-        listView.setAdapter(productsAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Product product = productsAdapter.getItem(i);
-                if (getActivity().findViewById(R.id.fragment_container_portrait) != null){
-                    changePortraitFragment(FragmentCache.getProductDetailsFragmentPortrait(), i);
-                } else {
-                    ProductDetailsFragment.onArticleSelected(product);
+        if (listView != null){
+            listView.setAdapter(productsAdapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    MainActivity.product = productsAdapter.getItem(i);
+                    if (getActivity().findViewById(R.id.fragment_container_portrait) != null) {
+                        changePortraitFragment(FragmentCache.getProductDetailsFragmentPortrait());
+                    } else {
+                        ProductDetailsFragment.onProductSelected();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
-    public void changePortraitFragment(ProductDetailsFragment productDetailsFragment, int i) {
-        Bundle args =  new Bundle();
-        args.putInt("position", i);
-
-        productDetailsFragment.setArguments(args);
+    public void changePortraitFragment(ProductDetailsFragment productDetailsFragment) {
+        productDetailsFragment.setArguments(getActivity().getIntent().getExtras());
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment_container_portrait, productDetailsFragment);
         transaction.addToBackStack(null);
-
-        // Commit the transaction
         transaction.commit();
     }
 }

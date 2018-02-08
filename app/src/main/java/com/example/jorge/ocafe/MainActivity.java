@@ -18,20 +18,29 @@ public class MainActivity extends AppCompatActivity {
             "       \"Name\": \"Coffee\",\n" +
             "       \"Description\": \"Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant.\",\n" +
             "       \"Image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/275px-A_small_cup_of_coffee.JPG\",\n" +
-            "       \"Price\" : 0.75,\n" +
-            "       \"Stock\" : 50\n" +
+            "       \"Price\": 0.75,\n" +
+            "       \"Stock\": 50\n" +
+            "   },\n" +
+            "   {\n" +
+            "       \"Category\": \"Food\",\n" +
+            "       \"Name\": \"Hamburguer\",\n" +
+            "       \"Description\": \"A Hamburguer is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.\",\n" +
+            "       \"Image\": \"http://fredlanches.com.br/wp-content/uploads/2016/07/model_hamb4.jpg\",\n" +
+            "       \"Price\": 1.50,\n" +
+            "       \"Stock\": 20\n" +
             "   },\n" +
             "   {\n" +
             "       \"Category\": \"Food\",\n" +
             "       \"Name\": \"Doughnut\",\n" +
             "       \"Description\": \"A doughnut is a type of fried dough confectionery or dessert food.\",\n" +
             "       \"Image\": \"https://www.duckdonuts.com/wp-content/uploads/2017/06/September_Glazed-310x320.png?x19636\",\n" +
-            "       \"Price\" : 1.10,\n" +
-            "       \"Stock\" : 28\n" +
+            "       \"Price\": 1.10,\n" +
+            "       \"Stock\": 43\n" +
             "   }\n" +
             "]";
 
     public static List<Product> products;
+    public static Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +48,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (findViewById(R.id.fragment_container_portrait) != null) {
-            if (FragmentCache.productsListFragmentPortrait != null || FragmentCache.productDetailsFragmentPortrait != null) {
+            if (FragmentCache.productsListFragmentPortrait != null ||
+                    FragmentCache.productDetailsFragmentPortrait != null) {
                 return;
             }
-
             setPortraitFragment(FragmentCache.getProductsListFragmentPortrait());
 
         } else {
-            if (FragmentCache.productsListFragmentLand != null && FragmentCache.productDetailsFragmentLand != null) {
+            if (FragmentCache.productsListFragmentLand != null &&
+                    FragmentCache.productDetailsFragmentLand != null) {
                 return;
             }
-
-            setLandscapeFragment(FragmentCache.getProductsListFragmentLand(), FragmentCache.getProductDetailsFragmentLand());
+            setLandscapeFragment(FragmentCache.getProductsListFragmentLand(),
+                    FragmentCache.getProductDetailsFragmentLand());
         }
 
         if (products == null) {
