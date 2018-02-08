@@ -2,6 +2,7 @@ package com.example.jorge.ocafe;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +39,26 @@ public class ProductListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Product product = productsAdapter.getItem(i);
                 if (getActivity().findViewById(R.id.fragment_container_portrait) != null){
-                    Toast.makeText(getActivity().getBaseContext(), "Clicked Portrait." +
-                                    product.getName(), Toast.LENGTH_SHORT).show();
+                    changePortraitFragment(FragmentCache.getProductDetailsFragmentPortrait(), i);
                 } else {
                     ProductDetailsFragment.onArticleSelected(product);
                 }
             }
         });
+    }
+
+    public void changePortraitFragment(ProductDetailsFragment productDetailsFragment, int i) {
+        Bundle args =  new Bundle();
+        args.putInt("position", i);
+
+        productDetailsFragment.setArguments(args);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment_container_portrait, productDetailsFragment);
+        transaction.addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
     }
 }

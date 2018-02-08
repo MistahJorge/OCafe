@@ -1,8 +1,5 @@
 package com.example.jorge.ocafe;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v4.app.Fragment;
-
 /**
  * Created by jorge on 06/02/2018.
  */
@@ -10,11 +7,17 @@ import android.support.v4.app.Fragment;
 public class FragmentCache {
     static ProductListFragment productsListFragmentPortrait;
     static ProductListFragment productsListFragmentLand;
-    static ProductDetailsFragment productDetailsFragment;
+    static ProductDetailsFragment productDetailsFragmentPortrait;
+    static  ProductDetailsFragment productDetailsFragmentLand;
 
     public static ProductListFragment getProductsListFragmentPortrait() {
         if (null == productsListFragmentPortrait) productsListFragmentPortrait = new ProductListFragment();
         return productsListFragmentPortrait;
+    }
+
+    public static ProductDetailsFragment getProductDetailsFragmentPortrait() {
+        if (null == productDetailsFragmentPortrait) productDetailsFragmentPortrait = new ProductDetailsFragment();
+        return productDetailsFragmentPortrait;
     }
 
     public static ProductListFragment getProductsListFragmentLand() {
@@ -22,8 +25,8 @@ public class FragmentCache {
         return productsListFragmentLand;
     }
 
-    public static ProductDetailsFragment getProductDetailsFragment() {
-        if (null == productDetailsFragment) productDetailsFragment = new ProductDetailsFragment();
-        return productDetailsFragment;
+    public static ProductDetailsFragment getProductDetailsFragmentLand() {
+        if (null == productDetailsFragmentLand) productDetailsFragmentLand = new ProductDetailsFragment();
+        return productDetailsFragmentLand;
     }
 }

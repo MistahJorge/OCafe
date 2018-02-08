@@ -47,7 +47,7 @@
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:contentDescription="Image placeholder"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewCategoryDetailsLabel"
@@ -72,55 +72,20 @@
                 app:layout_constraintTop_toTopOf="@+id/textViewCategoryDetailsLabel" />
 
             <TextView
-                android:id="@+id/textViewDescriptionDetailsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Description:"
-                app:layout_constraintStart_toStartOf="@+id/textViewCategoryDetailsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCategoryDetailsLabel" />
-
-            <ScrollView
-                android:id="@+id/scrollViewDescrition"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textViewProductCategoryDetails"
-                app:layout_constraintStart_toStartOf="@+id/textViewDescriptionDetailsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionDetailsLabel">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textViewProductDescriptionDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintEnd_toEndOf="@+id/textViewProductCategoryDetails"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/textViewDescriptionDetailsLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionDetailsLabel" />
-                </LinearLayout>
-            </ScrollView>
-
-            <TextView
                 android:id="@+id/textViewPriceDetailsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Price:"
-                app:layout_constraintStart_toStartOf="@+id/scrollViewDescrition"
-                app:layout_constraintTop_toBottomOf="@+id/scrollViewDescrition" />
+                app:layout_constraintStart_toStartOf="@+id/textViewCategoryDetailsLabel"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCategoryDetailsLabel" />
 
             <TextView
                 android:id="@+id/textViewProductPriceDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewPriceDetailsLabel"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +109,50 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textViewStockDetailsLabel"
                 app:layout_constraintEnd_toEndOf="@+id/textViewProductPriceDetails"
                 app:layout_constraintTop_toTopOf="@+id/textViewStockDetailsLabel" />
+
+            <TextView
+                android:id="@+id/textViewDescriptionDetailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Description:"
+                app:layout_constraintStart_toStartOf="@+id/textViewStockDetailsLabel"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStockDetailsLabel" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewDescriptionDetailsLabel"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionDetailsLabel">
+
+                <ScrollView
+                    android:id="@+id/scrollViewDescrition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewProductCategoryDetails"
+                    app:layout_constraintStart_toStartOf="@+id/textViewDescriptionDetailsLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionDetailsLabel">
+
+                    <TextView
+                        android:id="@+id/textViewProductDescriptionDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        app:layout_constraintEnd_toEndOf="@+id/textViewProductCategoryDetails"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/textViewDescriptionDetailsLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionDetailsLabel" />
+
+                </ScrollView>
+            </LinearLayout>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
