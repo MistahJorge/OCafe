@@ -8,29 +8,25 @@ public class FragmentCache {
     static ProductListFragment productsListFragmentPortrait;
     static ProductListFragment productsListFragmentLand;
     static ProductDetailsFragment productDetailsFragmentPortrait;
-    static ProductDetailsFragment productDetailsFragmentLand;
+    static  ProductDetailsFragment productDetailsFragmentLand;
 
     public static ProductListFragment getProductsListFragmentPortrait() {
-        if (null == FragmentCache.productsListFragmentPortrait)
-            FragmentCache.productsListFragmentPortrait = new ProductListFragment();
-        return FragmentCache.productsListFragmentPortrait;
+        if (null == productsListFragmentPortrait) productsListFragmentPortrait = new ProductListFragment();
+        return productsListFragmentPortrait;
     }
 
     public static ProductDetailsFragment getProductDetailsFragmentPortrait() {
-        if (null == FragmentCache.productDetailsFragmentPortrait)
-            FragmentCache.productDetailsFragmentPortrait = new ProductDetailsFragment();
-        return FragmentCache.productDetailsFragmentPortrait;
+        if (null == productDetailsFragmentPortrait) productDetailsFragmentPortrait = new ProductDetailsFragment();
+        return productDetailsFragmentPortrait;
     }
 
     public static ProductListFragment getProductsListFragmentLand() {
-        if (null == FragmentCache.productsListFragmentLand)
-            FragmentCache.productsListFragmentLand = new ProductListFragment();
-        return FragmentCache.productsListFragmentLand;
+        if (null == productsListFragmentLand) productsListFragmentLand = new ProductListFragment();
+        return productsListFragmentLand;
     }
 
     public static ProductDetailsFragment getProductDetailsFragmentLand() {
-        if (null == FragmentCache.productDetailsFragmentLand)
-            FragmentCache.productDetailsFragmentLand = new ProductDetailsFragment();
-        return FragmentCache.productDetailsFragmentLand;
+        if (null == productDetailsFragmentLand) productDetailsFragmentLand = new ProductDetailsFragment();
+        return productDetailsFragmentLand;
     }
 }
