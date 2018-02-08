@@ -39,18 +39,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (findViewById(R.id.fragment_container_portrait) != null) {
-            if (FragmentCache.productsListFragmentPortrait != null) {
+            if (FragmentCache.productsListFragmentPortrait != null || FragmentCache.productDetailsFragmentPortrait != null) {
                 return;
             }
 
             setPortraitFragment(FragmentCache.getProductsListFragmentPortrait());
 
         } else {
-            if (FragmentCache.productsListFragmentLand != null && FragmentCache.productDetailsFragment != null) {
+            if (FragmentCache.productsListFragmentLand != null && FragmentCache.productDetailsFragmentLand != null) {
                 return;
             }
 
-            setLandscapeFragment(FragmentCache.getProductsListFragmentLand(), FragmentCache.getProductDetailsFragment());
+            setLandscapeFragment(FragmentCache.getProductsListFragmentLand(), FragmentCache.getProductDetailsFragmentLand());
         }
 
         if (products == null) {
