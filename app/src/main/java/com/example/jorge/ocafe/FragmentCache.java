@@ -17,7 +17,7 @@ public class FragmentCache {
 
     public static ProductDetailsFragment getProductDetailsFragmentPortrait() {
         if (null == productDetailsFragmentPortrait) productDetailsFragmentPortrait = new ProductDetailsFragment();
-        return productDetailsFragmentPortrait;
+        return productDetailsFragmentPortrait; 
     }
 
     public static ProductListFragment getProductsListFragmentLand() {
