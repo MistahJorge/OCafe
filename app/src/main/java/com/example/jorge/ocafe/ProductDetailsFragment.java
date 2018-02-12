@@ -50,7 +50,7 @@ public class ProductDetailsFragment extends Fragment {
             productPriceDetailsTextView = getActivity().findViewById(R.id.textViewProductPriceDetails);
             productStockDetailsTextView = getActivity().findViewById(R.id.textViewProductStockDetails);
 
-            if (productNameDetailsTextViewForIf != null) {
+            if (productNameDetailsTextViewForIf != null && MainActivity.product != null) {
                 ProductDetailsFragment.updateDetails();
             }
     }

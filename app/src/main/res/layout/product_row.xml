@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageViewProductImageDetails"
+        android:id="@+id/imageViewProductImage"
         android:layout_width="63dp"
         android:layout_height="66dp"
         android:layout_marginBottom="8dp"
@@ -26,23 +26,49 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageViewProductImageDetails"
-        app:layout_constraintTop_toTopOf="@+id/imageViewProductImageDetails" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewProductImage"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProductImage" />
 
     <TextView
         android:id="@+id/textViewProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price: ???€"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewProductImageDetails"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProductImage"
         app:layout_constraintStart_toStartOf="@+id/textViewProductNameDetails"
-        app:layout_constraintTop_toTopOf="@+id/imageViewProductImageDetails" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewProductImage" />
 
     <TextView
         android:id="@+id/textViewProductStock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stock: ???€"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewProductImageDetails"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProductImage"
         app:layout_constraintStart_toStartOf="@+id/textViewProductPrice" />
+
+    <ImageView
+        android:id="@+id/imageViewAdd"
+        android:layout_width="50dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProductImage"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewRemove"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProductImage"
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <ImageView
+        android:id="@+id/imageViewRemove"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewAdd"
+        app:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
 </android.support.constraint.ConstraintLayout>

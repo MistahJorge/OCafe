@@ -8,14 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductListFragment extends Fragment {
 
-    private ProductsAdapter productsAdapter;
+    private static ProductsAdapter productsAdapter;
 
     public ProductListFragment() {
         // Required empty public constructor
@@ -40,8 +39,11 @@ public class ProductListFragment extends Fragment {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     MainActivity.product = productsAdapter.getItem(i);
                     if (getActivity().findViewById(R.id.fragment_container_portrait) != null) {
-                        changePortraitFragment(FragmentCache.getProductDetailsFragmentPortrait());
+                        changePortraitFragmentToDetails(FragmentCache.getProductDetailsFragmentPortrait());
                     } else {
+                        if(getActivity().findViewById(R.id.textViewProductNameDetails) != null) {
+                            changeLandscapeFragmentToDetails(FragmentCache.getProductDetailsFragmentLand());
+                        }
                         ProductDetailsFragment.onProductSelected();
                     }
                 }
@@ -49,13 +51,22 @@ public class ProductListFragment extends Fragment {
         }
     }
 
-    public void changePortraitFragment(ProductDetailsFragment productDetailsFragment) {
+    public void changePortraitFragmentToDetails(ProductDetailsFragment productDetailsFragment) {
         productDetailsFragment.setArguments(getActivity().getIntent().getExtras());
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment_container_portrait, productDetailsFragment);
         transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void changeLandscapeFragmentToDetails(ProductDetailsFragment productDetailsFragment) {
+        productDetailsFragment.setArguments(getActivity().getIntent().getExtras());
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment_container_land2, productDetailsFragment);
         transaction.commit();
     }
 }
