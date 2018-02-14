@@ -8,6 +8,7 @@ public class Product {
     private String image;
     private double price;
     private int stock;
+    private int stockOnList;
 
     public Product(String category, String name, String description, String image, double price, int stock) {
         this.category = category;
@@ -16,6 +17,7 @@ public class Product {
         this.image = image;
         this.price = price;
         this.stock = stock;
+        this.stockOnList = 0;
     }
 
     public Product(long id, String category, String name, String description, String image, double price, int stock) {
@@ -26,6 +28,7 @@ public class Product {
         this.image = image;
         this.price = price;
         this.stock = stock;
+        this.stockOnList = 0;
     }
 
     public long getId() {
@@ -52,11 +55,30 @@ public class Product {
         return this.price;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
     public int getStock() {
         return this.stock;
+    }
+
+    public int getStockOnList() {return stockOnList;}
+
+    public void editOrderAdd() {
+            this.stock--;
+            this.stockOnList++;
+    }
+
+    public void editOrderRemove() {
+        this.stockOnList--;
+        this.stock++;
+    }
+
+    public void resetStockOnList() {
+        if (this.stockOnList > 0){
+        this.stock += this.stockOnList;
+        this.stockOnList = 0;
+        }
+    }
+
+    public void confirmStockOnListForProduct() {
+        this.stockOnList = 0;
     }
 }

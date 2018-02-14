@@ -14,8 +14,6 @@ import android.widget.ListView;
  */
 public class ProductListFragment extends Fragment {
 
-    private static ProductsAdapter productsAdapter;
-
     public ProductListFragment() {
         // Required empty public constructor
     }
@@ -30,21 +28,22 @@ public class ProductListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
         ListView listView = getActivity().findViewById(R.id.listViewProduct);
         if (listView != null){
-            listView.setAdapter(productsAdapter);
+            MainActivity.productsAdapter = new ProductsAdapter(getActivity(), MainActivity.products);
+            listView.setAdapter(MainActivity.productsAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    MainActivity.product = productsAdapter.getItem(i);
+                    MainActivity.product = MainActivity.productsAdapter.getItem(i);
                     if (getActivity().findViewById(R.id.fragment_container_portrait) != null) {
                         changePortraitFragmentToDetails(FragmentCache.getProductDetailsFragmentPortrait());
                     } else {
-                        if(getActivity().findViewById(R.id.textViewProductNameDetails) != null) {
+                        if(getActivity().findViewById(R.id.textViewProductNameDetails) == null) {
                             changeLandscapeFragmentToDetails(FragmentCache.getProductDetailsFragmentLand());
+                        } else {
+                            ProductDetailsFragment.onProductSelected();
                         }
-                        ProductDetailsFragment.onProductSelected();
                     }
                 }
             });

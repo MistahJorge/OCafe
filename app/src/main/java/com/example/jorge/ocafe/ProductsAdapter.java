@@ -16,10 +16,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-/**
- * Created by jorge on 13/01/2018.
- */
-
 public class ProductsAdapter extends BaseAdapter {
     private Context context;
     private List<Product> products;
@@ -51,16 +47,16 @@ public class ProductsAdapter extends BaseAdapter {
             view = LayoutInflater.from(this.context).inflate(R.layout.product_row, viewGroup,
                     false);
         }
-        Product product = this.getItem(i);
+        final Product product = this.getItem(i);
 
-        TextView textViewProductName = view.findViewById(R.id.textViewProductNameDetails);
+        TextView textViewProductName = view.findViewById(R.id.textViewProductName);
         textViewProductName.setText(product.getName());
 
         ImageView imageViewProductPlaceHolder = view.findViewById(R.id.imageViewProductImage);
         Glide.with(context).load(product.getImage()).into(imageViewProductPlaceHolder);
 
         TextView textViewProductPrice = view.findViewById(R.id.textViewProductPrice);
-        textViewProductPrice.setText("Price: " + product.getPrice() + "€");
+        textViewProductPrice.setText(String.format("Price: %.2f€", product.getPrice()));
 
         TextView textViewProductStock = view.findViewById(R.id.textViewProductStock);
         textViewProductStock.setText("Stock: " + product.getStock());
@@ -69,21 +65,24 @@ public class ProductsAdapter extends BaseAdapter {
         imageViewAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity = (Activity) context;
-                if (activity.findViewById(R.id.textViewOrderListTitle) == null) {
-                    if (activity.findViewById(R.id.fragment_container_portrait) != null){
+                if (product.getStock() > 0) {
+                    activity = (Activity) context;
+                    if (activity.findViewById(R.id.fragment_container_portrait) != null) {
                         int flow = 1;
-                        Toast.makeText(context, "It should add a product in the future.",
-                                Toast.LENGTH_SHORT).show();
-                        changePortraitFragmentToOrderList(
+                        product.editOrderAdd();
+                        changeFragmentToOrderList(
                                 FragmentCache.getOrderListFragmentPortrait(), flow);
                     } else {
                         int flow = 2;
-                        Toast.makeText(context, "It should add a product in the future.",
-                                Toast.LENGTH_SHORT).show();
-                        changePortraitFragmentToOrderList(
-                                FragmentCache.getOrderListFragmentPortrait(), flow);
+                        product.editOrderAdd();
+                        if (activity.findViewById(R.id.textViewOrderListTitle) == null) {
+                            changeFragmentToOrderList(
+                                    FragmentCache.getOrderListFragmentLand(), flow);
+                        } else {
+                            OrderListFragment.callUpdateOrderList();
+                        }
                     }
+                    updateProduct();
                 }
             }
         });
@@ -93,21 +92,24 @@ public class ProductsAdapter extends BaseAdapter {
         imageViewRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity = (Activity) context;
-                if(activity.findViewById(R.id.textViewOrderListTitle) == null) {
+                if (product.getStockOnList() > 0) {
+                    activity = (Activity) context;
                     if (activity.findViewById(R.id.fragment_container_portrait) != null) {
                         int flow = 1;
-                        Toast.makeText(context, "It should remove a product in the future.",
-                                Toast.LENGTH_SHORT).show();
-                        changePortraitFragmentToOrderList(
+                        product.editOrderRemove();
+                        changeFragmentToOrderList(
                                 FragmentCache.getOrderListFragmentPortrait(), flow);
                     } else {
                         int flow = 2;
-                        Toast.makeText(context, "It should remove a product in the future.",
-                                Toast.LENGTH_SHORT).show();
-                        changePortraitFragmentToOrderList(
-                                FragmentCache.getOrderListFragmentPortrait(), flow);
+                        product.editOrderRemove();
+                        if (activity.findViewById(R.id.textViewOrderListTitle) == null) {
+                        changeFragmentToOrderList(
+                                FragmentCache.getOrderListFragmentLand(), flow);
+                        } else {
+                            OrderListFragment.callUpdateOrderList();
+                        }
                     }
+                    updateProduct();
                 }
             }
         });
@@ -115,7 +117,7 @@ public class ProductsAdapter extends BaseAdapter {
         return view;
     }
 
-    private void changePortraitFragmentToOrderList(OrderListFragment orderListFragment, int flow) {
+    private void changeFragmentToOrderList(OrderListFragment orderListFragment, int flow) {
         orderListFragment.setArguments(activity.getIntent().getExtras());
 
         android.support.v4.app.FragmentManager fragmentManager = getActivitySupportFragmentManager();
@@ -123,15 +125,14 @@ public class ProductsAdapter extends BaseAdapter {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         switch (flow){
-            case 1: transaction.replace(R.id.fragment_container_portrait, orderListFragment);
-                    break;
-            case 2: transaction.replace(R.id.fragment_container_land2, orderListFragment);
-                break;
-            default:
-                Toast.makeText(context, "You are not supposed to reach this part of the " +
-                        "switch... check your code", Toast.LENGTH_SHORT).show();
+            case 1:     transaction.replace(R.id.fragment_container_portrait, orderListFragment);
+                        transaction.addToBackStack(null);
+                        break;
+            case 2:     transaction.replace(R.id.fragment_container_land2, orderListFragment);
+                        break;
+            default:    Toast.makeText(context, "You are not supposed to reach this part of " +
+                    "the switch... check your code", Toast.LENGTH_SHORT).show();
         }
-        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -144,5 +145,9 @@ public class ProductsAdapter extends BaseAdapter {
                     Toast.LENGTH_SHORT).show();
         }
         return null;
+    }
+
+    public void updateProduct() {
+        notifyDataSetChanged();
     }
 }
