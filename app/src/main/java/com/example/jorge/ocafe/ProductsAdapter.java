@@ -84,7 +84,7 @@ public class ProductsAdapter extends BaseAdapter {
                     }
                     updateProduct();
                 } else {
-                    Toast.makeText(context, "There are no " + MainActivity.product.getName() +
+                    Toast.makeText(context, "There are no " + product.getName() +
                             " on stock.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -114,7 +114,7 @@ public class ProductsAdapter extends BaseAdapter {
                     }
                     updateProduct();
                 } else {
-                    Toast.makeText(context, "There are no " + MainActivity.product.getName() +
+                    Toast.makeText(context, "There are no " + product.getName() +
                             " on the order list.", Toast.LENGTH_SHORT).show();
                 }
             }
