@@ -56,7 +56,7 @@ public class OrderListFragment extends Fragment {
             Product product = MainActivity.products.get(i);
             if(i == 0){
                 if (product.getStockOnList() > 0) {
-                    orderListContentTextView.setText(product.getName() + ": " +
+                    orderListContentTextView.setText("- " + product.getName() + ": " +
                             product.getStockOnList() + '\n');
                 } else {
                     orderListContentTextView.setText("");
@@ -64,7 +64,7 @@ public class OrderListFragment extends Fragment {
             } else {
                 if (product.getStockOnList() > 0) {
                     orderListContentTextView.setText(orderListContentTextView.getText().toString() +
-                            product.getName() + ": " + product.getStockOnList() + '\n');
+                            "- " + product.getName() + ": " + product.getStockOnList() + '\n');
                 }
             }
             totalPrice = totalPrice + product.getPrice() * ((double) product.getStockOnList());

@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/o_cafe_custom_toolbar">
 
         <include
-            layout="@layout/scene_1"
+            layout="@layout/call_suppliers_scene"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

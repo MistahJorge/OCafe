@@ -9,9 +9,4 @@
         android:iconTint="@android:color/background_light"
         android:title="Call suppliers"
         app:showAsAction="ifRoom" />
-
-    <item android:id="@+id/action_settings"
-        android:iconTint="@android:color/background_light"
-        android:title="Settings"
-        app:showAsAction="never"></item>
 </menu>
