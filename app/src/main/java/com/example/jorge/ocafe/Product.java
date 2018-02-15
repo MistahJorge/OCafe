@@ -81,4 +81,8 @@ public class Product {
     public void confirmStockOnListForProduct() {
         this.stockOnList = 0;
     }
+
+    public void addStock() {
+        this.stock += 10;
+    }
 }

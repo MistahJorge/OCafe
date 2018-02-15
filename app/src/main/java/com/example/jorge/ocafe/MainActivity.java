@@ -1,10 +1,16 @@
 package com.example.jorge.ocafe;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -44,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
             "   }\n" +
             "]";
 
+    private final int GET_SUPPLIES_REQUEST_CODE = 0;
+
     public static List<Product> products;
     public static Product product;
 
@@ -53,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar oCafeToolbar = findViewById(R.id.o_cafe_custom_toolbar);
+        oCafeToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(oCafeToolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.o_cafe_menu, menu);
+        return true;
     }
 
     @Override
@@ -186,5 +204,37 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog cancelOrderDialog = builder.create();
         cancelOrderDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+
+            case R.id.action_call:
+                Intent intent = new Intent(this, CallSuppliers.class);
+                startActivityForResult(intent, GET_SUPPLIES_REQUEST_CODE);
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GET_SUPPLIES_REQUEST_CODE){
+            for (int i = 0; i < MainActivity.products.size(); i++) {
+                this.product = products.get(i);
+                product.addStock();
+                productsAdapter.updateProduct();
+            }
+        }
     }
 }

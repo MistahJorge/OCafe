@@ -18,8 +18,6 @@ public class OrderListFragment extends Fragment {
 
     public static double totalPrice;
 
-    private static Context context;
-
     private TextView orderListContentTextViewForIf;
     public static TextView orderListContentTextView;
     public static TextView orderListPriceTextView;
@@ -40,7 +38,6 @@ public class OrderListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        this.context = getActivity();
         orderListContentTextViewForIf = getActivity().findViewById(R.id.textViewOrderListContent);
         orderListContentTextView = orderListContentTextViewForIf;
         orderListPriceTextView = getActivity().findViewById(R.id.textViewOrderListPrice);
