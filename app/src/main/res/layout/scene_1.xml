@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textViewCallSuppliersTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Call suppliers"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCallSuppliersTitle">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewLiminicoffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="LiminoCoffee"
+                app:layout_constraintBottom_toTopOf="@+id/textViewtextViewLiminicoffeeNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier" />
+
+            <TextView
+                android:id="@+id/textViewtextViewLiminicoffeeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLiminicoffee" />
+
+            <Button
+                android:id="@+id/buttonCallSupplier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:onClick="callSupplier"
+                android:text="Call"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonCheckSupplier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:onClick="checkLocation"
+                android:text="Check Location"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCallSupplier"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier" />
+
+            <TextView
+                android:id="@+id/textViewVenezianocoffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Venezianocoffee"
+                app:layout_constraintBottom_toTopOf="@+id/textViewtextViewVenezianocoffeeNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier2" />
+
+            <TextView
+                android:id="@+id/textViewtextViewVenezianocoffeeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewVenezianocoffee" />
+
+            <Button
+                android:id="@+id/buttonCallSupplier2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="callSupplier"
+                android:text="Call"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCallSupplier" />
+
+            <Button
+                android:id="@+id/buttonCheckSupplier2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:onClick="checkLocation"
+                android:text="Check Location"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier2"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCallSupplier2"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier2" />
+
+            <TextView
+                android:id="@+id/textViewPrimacoffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Prima Coffee"
+                app:layout_constraintBottom_toTopOf="@+id/textViewPrimacoffeeNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier3" />
+
+            <TextView
+                android:id="@+id/textViewPrimacoffeeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrimacoffee" />
+
+            <Button
+                android:id="@+id/buttonCallSupplier3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="callSupplier"
+                android:text="Call"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCallSupplier2" />
+
+            <Button
+                android:id="@+id/buttonCheckSupplier3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:onClick="checkLocation"
+                android:text="Check Location"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCallSupplier3"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCallSupplier3"
+                app:layout_constraintTop_toTopOf="@+id/buttonCallSupplier3" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="confirmSupplier"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
